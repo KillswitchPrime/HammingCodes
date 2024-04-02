@@ -54,8 +54,13 @@
             return errorIndex;
         }
 
-        public static Dictionary<string, int> DecodeData(Dictionary<string, int> data, string errorIndex)
+        public static Dictionary<string, int> DecodeData(Dictionary<string, int> data, string? errorIndex)
         {
+            if(errorIndex is null)
+            {
+                return data;
+            }
+
             data[errorIndex] = FlipBinary.FlipBit(data[errorIndex]);
             return data;
         }
